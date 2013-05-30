@@ -14,7 +14,7 @@ public class DataAccess
 	{
 		//
 		// TODO: Add constructor logic here
-		//
+		// We dont need no stinking logic!
 	}
 
     public DataSet GetData(string queryString, string sqlStatement)
@@ -45,6 +45,7 @@ public class DataAccess
         }
 
     }
+
     public DataTable GetDataTable(string queryString, string sqlStatement)
     {
         try
@@ -70,6 +71,27 @@ public class DataAccess
         catch (SqlException se)
         {
             return null;
+        }
+    }
+
+    public bool DataPuterInner(string queryString, string sqlStatement)
+    {
+        string sql = sqlStatement;
+        string connectionString = queryString;
+        try
+        {
+            
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection();
+            conn.ConnectionString = connectionString;
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            return true;
+        }
+        catch (SqlException se)
+        {
+            return false;
         }
     }
 }
