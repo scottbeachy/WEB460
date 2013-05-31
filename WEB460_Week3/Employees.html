@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Scott Beachy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="rml.js"></script>
+</head>
+<body>
+    <div data-role="page" id="datapage" class="type-interior">
+        <ul data-role="listview" data-inset="true" id="datacontainer">
+            
+            
+        </ul>
+    </div>
+</body>
+    <script>
+        var text = "";
+        $.getJSON('http://localhost:51681/WEB460_Week3/getemployees.aspx', function (data) {
+
+            
+            $.each(data.employees, function (key, val) {
+                text += RML.li({
+                    content: RML.a({
+                        href: "getOrders.aspx?employeeID=" + val.employeeid ,
+                        content: val.firstname + ' ' + val.lastname
+                    })
+                });
+            });
+            $("#datacontainer").append(text);
+            try
+            {
+                $('#datacontainer').listview('refresh');
+            }
+            catch (e)
+            {
+                $('datacontainer').listview();
+            }
+            jQuery('#datapage').page("destroy").page();
+        });
+
+        
+    </script>
+
+
+</html>

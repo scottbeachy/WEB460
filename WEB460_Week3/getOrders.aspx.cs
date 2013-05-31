@@ -18,7 +18,7 @@ public partial class getOrders : System.Web.UI.Page
         //Create a new object for connections
         DataAccess da = new DataAccess();
         //And create a new ds to return data into
-        System.Data.DataSet ds = da.GetData(connectionString, "SELECT OrderID , OProduct, OPrice FROM Beachy_Orders;");
+        System.Data.DataSet ds = da.GetDataSet(connectionString, "SELECT EmployeeID, OrderID , OProduct, OPrice FROM Beachy_Orders;");
 
         if (ds != null)
         {

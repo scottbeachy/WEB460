@@ -18,7 +18,7 @@ public partial class getCustomer : System.Web.UI.Page
         //Create a new object for connections
         DataAccess da = new DataAccess();
         //And create a new ds to return data into
-        System.Data.DataSet ds = da.GetData(connectionString, "SELECT CustomerID , CFName, CLName FROM Beachy_Customer;");
+        System.Data.DataSet ds = da.GetDataSet(connectionString, "SELECT CustomerID , CFName, CLName FROM Beachy_Customer;");
 
         if (ds != null)
         {

@@ -17,7 +17,7 @@ public class DataAccess
 		// We dont need no stinking logic!
 	}
 
-    public DataSet GetData(string queryString, string sqlStatement)
+    public DataSet GetDataSet(string queryString, string sqlStatement)
     {
         try
         {
